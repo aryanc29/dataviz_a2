@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Visitor Trips vs Nights Spent by State/Territory (International Visitors, 2025)",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "width": 700,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/aryanc29/dataviz_a2/main/nights_spent.csv"
+  },
+  "transform": [
+    {
+      "lookup": "state",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/aryanc29/dataviz_a2/main/visitors_by_state.csv"
+        },
+        "key": "state",
+        "fields": ["trips"]
+      }
+    },
+    {"calculate": "datum.nights / datum.trips", "as": "avg_nights"}
+  ],
+  "mark": {
+    "type": "circle",
+    "size": 250,
+    "opacity": 0.8,
+    "stroke": "#333",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "trips",
+      "type": "quantitative",
+      "title": "Trips",
+      "axis": {"grid": true}
+    },
+    "y": {
+      "field": "nights",
+      "type": "quantitative",
+      "title": "Nights Spent",
+      "axis": {"grid": true}
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State/Territory",
+      "scale": {"scheme": "accent"}
+    },
+    "tooltip": [
+      {"field": "state", "title": "State/Territory:"},
+      {"field": "trips", "title": "Trips:", "format": ",.0f"},
+      {"field": "nights", "title": "Nights Spent:", "format": ",.0f"},
+      {
+        "field": "avg_nights",
+        "title": "Average Nights per Trip:",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {
+    "background": "#f8f9fa",
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 13},
+    "legend": {"titleFontSize": 12, "labelFontSize": 11}
+  }
+}

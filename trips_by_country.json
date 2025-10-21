@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Trips by country of origin (Year ending March 2025)",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "middle"
+  },
+  "width": 780,
+  "height": 420,
+  "data": {
+    "url": "https://raw.githubusercontent.com/aryanc29/dataviz_a2/main/country_trips.csv"
+  },
+  "transform": [{"calculate": "datum.trips / 1000", "as": "trips_thousand"}],
+  "mark": {
+    "type": "circle",
+    "opacity": 0.85,
+    "stroke": "#333",
+    "strokeWidth": 0.7
+  },
+  "encoding": {
+    "x": {
+      "field": "country",
+      "type": "nominal",
+      "sort": {"field": "trips", "order": "descending"},
+      "title": "Country",
+      "axis": {"labelAngle": -25, "labelLimit": 120, "labelFontSize": 12}
+    },
+    "y": {
+      "field": "trips_thousand",
+      "type": "quantitative",
+      "title": "Trips ('000)",
+      "axis": {
+        "grid": true,
+        "gridOpacity": 0.25,
+        "tickCount": 6,
+        "format": ",.0f"
+      }
+    },
+    "size": {
+      "field": "trips",
+      "type": "quantitative",
+      "title": null,
+      "legend": null,
+      "scale": {"range": [180, 1800]}
+    },
+    "color": {"value": "#2a9d8f"},
+    "tooltip": [
+      {"field": "country", "title": "Country:"},
+      {"field": "trips", "title": "Trips:", "format": ","}
+    ]
+  },
+  "config": {
+    "background": "#f9fafb",
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 13},
+    "legend": {"disable": true}
+  }
+}

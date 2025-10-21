@@ -1,0 +1,50 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Purpose of visit by international visitors (Year ending March 2025)",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "middle"
+  },
+  "width": 400,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/aryanc29/dataviz_a2/main/purpose.csv"
+  },
+  "transform": [
+    {"calculate": "datum.trips / 1000", "as": "trips_thousand"},
+    {
+      "window": [{"op": "sum", "field": "trips_thousand", "as": "total"}],
+      "frame": [null, null]
+    },
+    {
+      "calculate": "datum.trips_thousand / datum.total * 100",
+      "as": "percentage"
+    }
+  ],
+  "mark": {
+    "type": "arc",
+    "innerRadius": 100,
+    "stroke": "#fff",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "theta": {"field": "trips_thousand", "type": "quantitative"},
+    "color": {
+      "field": "purpose",
+      "type": "nominal",
+      "title": "Purpose of Visit",
+      "scale": {"scheme": "tableau10"}
+    },
+    "tooltip": [
+      {"field": "purpose", "title": "Purpose"},
+      {"field": "trips_thousand", "title": "Trips ('000)", "format": ",.0f"},
+      {"field": "percentage", "title": "Share (%)", "format": ".1f"}
+    ]
+  },
+  "config": {
+    "background": "#f9fafb",
+    "view": {"stroke": null},
+    "legend": {"titleFontSize": 12, "labelFontSize": 11}
+  }
+}

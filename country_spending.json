@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "International visitor spending by country of origin (Year ending March 2025)",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "middle"
+  },
+  "width": 700,
+  "height": 450,
+  "data": {
+    "url": "https://raw.githubusercontent.com/aryanc29/dataviz_a2/main/spending.csv"
+  },
+  "transform": [
+    {"calculate": "datum.spending / 1000000000", "as": "spending_billion"}
+  ],
+  "mark": {"type": "bar", "cornerRadiusEnd": 3},
+  "encoding": {
+    "y": {
+      "field": "country",
+      "type": "nominal",
+      "sort": "-x",
+      "title": "Country of Origin",
+      "axis": {"labelFontSize": 12, "titleFontSize": 13}
+    },
+    "x": {
+      "field": "spending_billion",
+      "type": "quantitative",
+      "title": "Spending ($ billion)",
+      "axis": {
+        "grid": true,
+        "gridOpacity": 0.3,
+        "tickCount": 6,
+        "format": ".1f"
+      }
+    },
+    "color": {"value": "#0099ff"},
+    "tooltip": [
+      {"field": "country", "title": "Country"},
+      {
+        "field": "spending_billion",
+        "title": "Spending ($ billion)",
+        "format": ".2f"
+      }
+    ]
+  },
+  "config": {
+    "background": "#f9fafb",
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 13, "gridColor": "#e0e0e0"}
+  }
+}

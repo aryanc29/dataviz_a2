@@ -1,0 +1,92 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Trips vs spending by country (Year ending March 2025)",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "middle"
+  },
+  "width": 820,
+  "height": 440,
+  "data": {
+    "url": "https://raw.githubusercontent.com/aryanc29/dataviz_a2/main/country_trips.csv"
+  },
+  "transform": [
+    {
+      "lookup": "country",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/aryanc29/dataviz_a2/main/spending.csv"
+        },
+        "key": "country",
+        "fields": ["spending"]
+      }
+    },
+    {"calculate": "datum.trips/1000", "as": "trips_k"},
+    {"calculate": "datum.spending/1000000000", "as": "spend_b"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar", "color": "#2a9d8f", "opacity": 0.9},
+      "encoding": {
+        "x": {
+          "field": "country",
+          "type": "nominal",
+          "sort": {"field": "trips", "order": "descending"},
+          "axis": {"labelAngle": -25, "labelFontSize": 12, "labelLimit": 140},
+          "title": "Country"
+        },
+        "y": {
+          "field": "trips_k",
+          "type": "quantitative",
+          "title": "Trips ('000)",
+          "axis": {
+            "grid": true,
+            "gridOpacity": 0.25,
+            "tickCount": 6,
+            "format": ",.0f"
+          },
+          "scale": {"nice": true, "zero": true}
+        },
+        "tooltip": [
+          {"field": "country", "title": "Country"},
+          {"field": "trips", "title": "Trips:", "format": ","},
+          {
+            "field": "spend_b",
+            "title": "Spending ($ billion):",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "#e76f51",
+        "strokeWidth": 2.5,
+        "point": false
+      },
+      "encoding": {
+        "x": {"field": "country"},
+        "y": {
+          "field": "spend_b",
+          "type": "quantitative",
+          "title": "Spending ($ billion)",
+          "axis": {
+            "orient": "right",
+            "titleColor": "#e76f51",
+            "tickCount": 6,
+            "format": ".1f"
+          },
+          "scale": {"nice": true, "zero": false}
+        }
+      }
+    }
+  ],
+  "resolve": {"scale": {"y": "independent"}},
+  "config": {
+    "background": "#f9fafb",
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 13}
+  }
+}
