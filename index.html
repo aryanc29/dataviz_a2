@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>International Visitors to Australia – Data Visualisation Report</title>
+
+  <!-- Vega & Vega-Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>International visitors to Australia (Year ending March 2025)</h1>
+    <p>This webpage presents a summary of travel and spending behaviour among international visitors. The figures are based on ABS data and use Vega-Lite for visualisation.</p>
+  </header>
+
+  <section>
+    <h2>1. Visitor distribution by state and territory</h2>
+    <div id="map"></div>
+  </section>
+
+  <section>
+    <h2>2. Trips vs nights spent</h2>
+    <div id="scatter"></div>
+  </section>
+
+  <section>
+    <h2>3. Visitor spending by country of origin</h2>
+    <div id="spend_bar"></div>
+  </section>
+
+  <section>
+    <h2>4. Purpose of visit</h2>
+    <div id="purpose_donut"></div>
+  </section>
+
+  <section>
+    <h2>5. Trips by country of origin</h2>
+    <div id="bubble"></div>
+  </section>
+
+  <section>
+    <h2>6. Trips vs spending comparison</h2>
+    <div id="dual_axis"></div>
+  </section>
+
+  <footer>
+    <p>Created by Aryan Chugh | FIT3179 Data Visualisation 2025 | Data source: Australian Bureau of Statistics</p>
+  </footer>
+
+  <script>
+    vegaEmbed('#map', 'visitors_map.json', {"actions": false});
+    vegaEmbed('#scatter', 'trips_vs_nights.json', {"actions": false});
+    vegaEmbed('#spend_bar', 'spending_country.json', {"actions": false});
+    vegaEmbed('#purpose_donut', 'purpose.json', {"actions": false});
+    vegaEmbed('#bubble', 'country_trips.json', {"actions": false});
+    vegaEmbed('#dual_axis', 'trips_vs_spending.json', {"actions": false});
+  </script>
+
+</body>
+</html>
