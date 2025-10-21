@@ -34,7 +34,7 @@
         "format": ".1f"
       }
     },
-    "color": {"value": "#0099ff"},
+    "color": {"value": "#66C8CC"},
     "tooltip": [
       {"field": "country", "title": "Country"},
       {

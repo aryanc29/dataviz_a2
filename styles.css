@@ -3,29 +3,54 @@ body {
   margin: 0 auto;
   max-width: 1100px;
   padding: 20px;
-  background-color: #f9fafb;
+  background-color: #C9F1FF;
   color: #222;
+  line-height: 1.6;
 }
 
 h1, h2 {
-  color: #264653;
-  text-align: centre;
+  color: #000000;
+  text-align: center;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.intro {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1em;
+  color: #444;
 }
 
 section {
-  background: #ffffff;
-  margin: 25px 0;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  background: #f9fafb;
+  margin: 35px 0;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 div[id] {
-  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 20px 0;
+}
+
+p.description {
+  max-width: 900px;
+  margin: 0 auto 25px auto;
+  text-align: center;
+  font-size: 0.95em;
+  color: #444;
 }
 
 footer {
-  text-align: centre;
+  text-align: center;
   margin-top: 40px;
   font-size: 0.9em;
   color: #555;

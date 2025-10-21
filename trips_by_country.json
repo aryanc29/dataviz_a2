@@ -44,7 +44,7 @@
       "legend": null,
       "scale": {"range": [180, 1800]}
     },
-    "color": {"value": "#2a9d8f"},
+    "color": {"value": "#66C8CC"},
     "tooltip": [
       {"field": "country", "title": "Country:"},
       {"field": "trips", "title": "Trips:", "format": ","}

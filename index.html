@@ -1,66 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>International Visitors to Australia – Data Visualisation Report</title>
 
-  <!-- Vega & Vega-Lite -->
+  <!-- Vega, Vega-Lite and Vega-Embed -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
 
+<body>
   <header>
-    <h1>International visitors to Australia (Year ending March 2025)</h1>
-    <p>This webpage presents a summary of travel and spending behaviour among international visitors. The figures are based on ABS data and use Vega-Lite for visualisation.</p>
+    <h1>International Visitors to Australia - Year Ending March 2025</h1>
+    <p class="intro">
+      This webpage presents multiple visualisations demonstrating the trends of international visitors in Australia. The purpose is to gauge an understanding of how many international visitors Australia has and their habits, for example spending and reasons for visiting. The data is sourced from Tourism Research Australia and also the Australian Bureau of Statistics.
+    </p>
   </header>
 
   <section>
-    <h2>1. Visitor distribution by state and territory</h2>
-    <div id="map"></div>
+    <h2>1. International visitor distribution by state and territory:</h2>
+    <div id="visitors_map"></div>
+    <p class="description">
+      The map above shows the number of international visitors for each state in Australia for the year ending March 2025. It is clear that New South Wales attracted the highest number of visitors (3.86m), followed by Victoria. In contrast, the Australian Capital Territory had the lowest number of international visitors, with 214,000. 
+    </p>
+    <p class="description">
+      From this, we can understand that people from other countries prefer to travel to states on Australia’s eastern coast. This could be due to more development, better climate and more activities, especially for tourism.
+    </p>
   </section>
 
   <section>
     <h2>2. Trips vs nights spent</h2>
-    <div id="scatter"></div>
+    <div id="trips_vs_nights"></div>
+    <p class="description">
+      The plot above shows the number of visitor trips vs the number of nights spent by visitors, in each state/territory. Clearly, New South Wales recorded the highest number of nights spent while also having the most trips. Again, this is followed by Victoria and then Queensland, while ACT and Northern Territory are at the bottom.    </p>
+    <p class="description">
+      The scatterplot suggests a strong correlation between number of trips and nights spent. From the almost perfectly linear pattern, it can be concluded that the more the number of trips, the more nights visitors will spend in Australia.    </p>
   </section>
 
   <section>
     <h2>3. Visitor spending by country of origin</h2>
-    <div id="spend_bar"></div>
+    <div id="country_spending"></div>
+    <p class="description">
+      The graph above shows the amount spent by visitors from different countries. It can easily be seen that visitors from China spent the most in Australia for the year ending March 2025, amounting to approximately 9.2 billion dollars. This is significantly higher than all the other countries, with 2nd place being the United Kingdom at 2.45 billion. 
+    </p>
   </section>
 
   <section>
-    <h2>4. Purpose of visit</h2>
-    <div id="purpose_donut"></div>
+    <h2>4. Trips by country of origin</h2>
+    <div id="trips_by_country"></div>
+    <p class="description">
+      The plot above shows the trips made from each country for the year ending March 2025. The country which stands out is New Zealand, which brought 1.237 million visitors to Australia. In contrast, Australia observed significantly less visitors from countries such as Switzerland and Netherlands.
+    <p class="description">
+      An increased number of visitors may be attributed to the geographical closeness. For example, Australia is very close to New Zealand, which makes it easier to travel to. European countries are much further away from Australia, possibly explaining why there are less visitors. 
+    </p>
   </section>
 
   <section>
-    <h2>5. Trips by country of origin</h2>
-    <div id="bubble"></div>
+    <h2>5. Trips vs spending comparison</h2>
+    <div id="trips_vs_spending"></div>
+    <p class="description">
+      The graph above shows a comparison between country spending and number of visitors to Australia. While the highest number of visitors were recorded from New Zealand, Chinese visitors spent the most money. It can also be seen that European visitors tended to spend more in proportion to the amount of visitors.
+    <p class="description">
+      While spending aligns with visitor numbers for some countries, there is not a direct correlation between spending and number of visitors. This could be due to economic reasons, for example income and GDP. 
+    </p>
   </section>
 
-  <section>
-    <h2>6. Trips vs spending comparison</h2>
-    <div id="dual_axis"></div>
+<section>
+    <h2>6. Purpose of visit</h2>
+    <div id="purpose"></div>
+    <p class="description">
+      The chart above shows the proportions of reasons for international visits to Australia. Most of the visitors came to Australia for a holiday, while many also came to visit family and friends. This signifies that tourism has a large impact on Australia’s economy. 
+    </p>
   </section>
-
   <footer>
-    <p>Created by Aryan Chugh | FIT3179 Data Visualisation 2025 | Data source: Australian Bureau of Statistics</p>
+    <p>
+      Created by Aryan Chugh | Student ID: 33861986 | FIT3179 Data Visualisation II | Data source: Tourism Research Australia
+    </p>
   </footer>
 
+  <!-- Embed all charts -->
   <script>
-    vegaEmbed('#map', 'visitors_map.json', {"actions": false});
-    vegaEmbed('#scatter', 'trips_vs_nights.json', {"actions": false});
-    vegaEmbed('#spend_bar', 'spending_country.json', {"actions": false});
-    vegaEmbed('#purpose_donut', 'purpose.json', {"actions": false});
-    vegaEmbed('#bubble', 'country_trips.json', {"actions": false});
-    vegaEmbed('#dual_axis', 'trips_vs_spending.json', {"actions": false});
+    vegaEmbed('#visitors_map', 'visitors_map.json', {"actions": false});
+    vegaEmbed('#trips_vs_nights', 'trips_vs_nights.json', {"actions": false});
+    vegaEmbed('#country_spending', 'country_spending.json', {"actions": false});
+    vegaEmbed('#trips_by_country', 'trips_by_country.json', {"actions": false});
+    vegaEmbed('#trips_vs_spending', 'trips_vs_spending.json', {"actions": false});
+    vegaEmbed('#purpose', 'purpose.json', {"actions": false});
   </script>
-
 </body>
 </html>

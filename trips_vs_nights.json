@@ -47,7 +47,7 @@
       "field": "state",
       "type": "nominal",
       "title": "State/Territory",
-      "scale": {"scheme": "accent"}
+      "scale": {"scheme": "tableau10"}
     },
     "tooltip": [
       {"field": "state", "title": "State/Territory:"},

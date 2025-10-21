@@ -31,7 +31,7 @@
       "field": "trips",
       "type": "quantitative",
       "title": "Visitors",
-      "scale": {"scheme": "purplered"}
+      "scale": {"scheme": "tealblues"}
     },
     "tooltip": [
       {"field": "properties.STE_NAME16", "title": "State/Territory:"},
@@ -39,7 +39,7 @@
     ]
   },
   "config": {
-    "background": "#cfe7f5",
+    "background": "#f9fafb",
     "view": {"stroke": null},
     "title": {"fontSize": 18, "anchor": "middle", "dy": -10}
   }
